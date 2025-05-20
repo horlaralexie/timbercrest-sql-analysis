@@ -50,15 +50,18 @@ FROM "products";
 SELECT *
 FROM "propertyinfo";
 
+
 -- 2. In what Cities and States are TimberCrest Properties Located.
 
 SELECT DISTINCT "PropertyCity", "PropertyState"
 FROM propertyinfo;
 
+
 -- 3. What are the different product categories TimberCrest has in store?
 
 SELECT DISTINCT "ProductCategory"
 FROM products;
+
 
 -- 4. What are the numbers of products in each product category?
 
@@ -66,10 +69,12 @@ SELECT DISTINCT "ProductCategory", COUNT(*) AS "NumberOfProducts"
 FROM products
 GROUP BY "ProductCategory";
 
+
 -- 5. What is the total quantity of products ordered?
 
 SELECT SUM("Quantity") AS "TotalQuantityOrdered"
 FROM orders;
+
 
 -- 6. What are the five most expensive products?
 
@@ -78,6 +83,7 @@ FROM products
 ORDER BY "Price" DESC
 LIMIT 5;
 
+
 -- 7. What is the average price of products in each category?
 
 SELECT DISTINCT "ProductCategory", AVG("Price") AS AveragePrice
@@ -85,11 +91,13 @@ FROM products
 GROUP BY "ProductCategory"
 ORDER BY AveragePrice DESC;
 
+
 -- 8. What products have names starting with “T”?
 
 SELECT "ProductName"
 FROM products
 WHERE "ProductName" LIKE 'T%';
+
 
 -- 9. Lists all products with names containing paper.
 
@@ -97,11 +105,13 @@ SELECT "ProductName"
 FROM products
 WHERE "ProductName" ILIKE '%paper%';
 
+
 -- 10. Extract the name and category of products whose prices are above $200
 
 SELECT "ProductName", "ProductCategory", "Price"
 FROM products
 WHERE "Price" > 200;
+
 
 -- 11. What is the total quantity of products ordered in 2015 and 2016 respectively
 
@@ -110,11 +120,13 @@ FROM orders
 WHERE EXTRACT(YEAR FROM "OrderDate") IN (2015, 2016)
 GROUP BY EXTRACT(YEAR FROM "OrderDate");
 
+
 -- 12. Which orders were made by property 1, 10, and 20?
 
 SELECT *
 FROM orders
 WHERE "PropertyID" IN (1, 10, 20);
+
 
 -- 13. What is the least expensive product?
 
